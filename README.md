@@ -22,7 +22,7 @@ python.exe -m pip install --upgrade pip
 
 pip install djangorestframework 
 
-pip install psycop2-binary==2.9.6 
+pip install psycopg2-binary==2.9.6 
 ```
 Em seguida podemos sair da venv e realizar a criação do projeto e do nosso app:
 
