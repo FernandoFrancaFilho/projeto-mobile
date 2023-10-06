@@ -1,21 +1,8 @@
-FROM python:3.11.6-alpine3.17
-
-ENV PYTHONUNBUFFERED 1
-
-WORKDIR /app
-
-RUN apk update \
-    && apk add --no-cache gcc musl-dev postgresql-dev python3-dev libffi-dev \
-    && pip install --upgrade pip \
-    && apk del gcc musl-dev postgresql-dev python3-dev libffi-dev \
-    && rm -rf /var/cache/apk/*
-
-COPY ./requirements.txt ./
-
-RUN pip install -r requirements.txt
-
-COPY ./ ./
-
+FROM --platform=$BUILDPLATFORM python:3.7-alpine AS builder
 EXPOSE 8000
-
-CMD ["sh", "/app/django.sh"]
+WORKDIR /app 
+COPY requirements.txt /app
+RUN pip3 install -r requirements.txt --no-cache-dir
+COPY . /app 
+ENTRYPOINT ["python3"] 
+CMD ["manage.py", "runserver", "0.0.0.0:8000"]

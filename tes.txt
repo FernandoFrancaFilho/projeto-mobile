@@ -1,0 +1,7 @@
+ docker run -d \
+	--name some-postgres \
+	-e POSTGRES_PASSWORD=postgres \
+    -e POSTGRES_USER=postgres \
+	-e PGDATA=postgres\
+	-v /custom/mount:/var/lib/postgresql/data \
+	postgres
