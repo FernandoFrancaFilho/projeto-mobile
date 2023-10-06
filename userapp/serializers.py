@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import User
+from .models import Vacina
 
-class UserSerializer(serializers.ModelSerializer):
+class VacinaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = Vacina
         fields = '__all__'

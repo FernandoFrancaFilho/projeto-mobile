@@ -1,8 +1,9 @@
-version: '4.2'
+version: '3.8'
 
 services:
   userapp:
     container_name: userapp
+    command: python3 manage.py makemigrations && python3 manage.py migrate
     build: .
     ports:
       - "8000:8000"
@@ -14,6 +15,9 @@ services:
       - PG_PORT=5432
     depends_on:
       - db
+    volumes:
+      - .:/app
+
   db:
     container_name: db
     image: postgres:15
@@ -28,3 +32,4 @@ services:
 
 volumes:
   pgdata: {}
+  appdata: {}

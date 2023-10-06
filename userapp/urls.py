@@ -1,10 +1,7 @@
-from django.urls import path
-from . import views
+from rest_framework.routers import DefaultRouter
+from .views import VacinaViewSet
 
-urlpatterns = [
-    path('', views.getUsers),
-    path('create', views.addUser),
-    path('read/<str:pk>', views.getUser),
-    path('update/<str:pk>', views.updateUser),
-    path('delete/<str:pk>', views.deleteUser),
-]
+router = DefaultRouter()
+router.register(r'vacinas', VacinaViewSet)
+     
+urlpatterns = router.urls
