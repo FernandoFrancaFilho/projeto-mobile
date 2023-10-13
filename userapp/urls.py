@@ -1,10 +1,8 @@
-from django.urls import path
-from . import views
+from rest_framework import routers
+from .views import ProfissionalViewSet, VacinaViewSet
 
-urlpatterns = [
-    path('', views.getUsers),
-    path('create', views.addUser),
-    path('read/<str:pk>', views.getUser),
-    path('update/<str:pk>', views.updateUser),
-    path('delete/<str:pk>', views.deleteUser),
-]
+router = routers.DefaultRouter()
+router.register(r'profissional', ProfissionalViewSet)
+router.register(r'vacina', VacinaViewSet) 
+     
+urlpatterns = router.urls

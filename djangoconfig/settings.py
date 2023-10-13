@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-w4=9^!_@fw&1&xd@lsl=ccwo)(-50^iqv*!davpnwtwrs(qf@s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -77,13 +77,13 @@ WSGI_APPLICATION = 'djangoconfig.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DB_DRIVER', 'django.db.backends.postgresql'),
-        'NAME': os.environ.get('PG_DB', 'postgres'),
-        'USER': os.environ.get('PG_USER', 'postgres'),
-        'PASSWORD': os.environ.get('PG_PASSWORD', 'postgres'),
-        'HOST': os.environ.get('PG_HOST', 'localhost'),
-        'PORT': os.environ.get('PG_PORT', '5432'),
+    "default": {
+        "ENGINE": os.environ.get("SQL_ENGINE","Environment variable does not exist"),
+        "NAME": os.environ.get("SQL_DATABASE","Environment variable does not exist"),
+        "USER":  os.environ.get("SQL_USER","Environment variable does not exist"),
+        "PASSWORD":  os.environ.get("SQL_PASSWORD","Environment variable does not exist"),
+        "HOST": os.environ.get("SQL_HOST","Environment variable does not exist"),
+        "PORT":  os.environ.get("SQL_PORT","Environment variable does not exist"),
     }
 }
 
